@@ -1,0 +1,29 @@
+#!/bin/bash
+###this script restarts the entire dvb-backend and vdr
+###the script can be executed by cronjob
+###that's the scond try to get rid of of the annoying "unknown channel error" when vdr is running for a few hours
+###actually asuming the error is caused by the mantis module
+###2015.10.19 - Paul Krause
+
+##kill vdr using upstart 
+/sbin/initctl stop vdr
+
+##restart entire dvb-backend after vdr did quit
+while true; do
+        if [ "$(cat /var/log/syslog | tail -n 10 | grep "vdr: .*. exiting, exit code 0" | tail -n 1)" ] || [ "$(cat /var/log/syslog | tail -n 10 | grep "vdr: .*. canceling" | tail -n 1)" ]
+                then
+                #unload dvb -modules
+                /sbin/rmmod mantis mantis_core dvb_core
+                while true; do
+                        if [ -z "$(ls /dev/ | grep dvb)" ]
+                                then
+                                #reload dvb-modules
+                                /sbin/modprobe mantis mantis_core dvb_core
+                                break
+                        fi
+                done
+                #start vdr using updatrt
+                /sbin/initctl start vdr
+                break
+        fi
+done
