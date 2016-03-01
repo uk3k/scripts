@@ -13,9 +13,9 @@ apt-get install -y python-software-properties software-properties-common git git
 apt-get update && apt-get upgrade -y && apt-get dist-upgrade -y
 basepkg="lirc linux-firmware linux-firmware-nonfree udisks upower xorg alsa-utils mesa-utils librtmp0 libmad0 lm-sensors libmpeg2-4 avahi-daemon libnfs1 consolekit pm-utils samba "
 vdrpkg="build-essential libjpeg62-dev libcap-dev libfontconfig1-dev gettext libncursesw5-dev libncurses5-dev pkg-config w-scan"
-apt-get build-dep -y vdr kodi
 oscampkg="cmake subversion openssl libssl-dev libusb-dev libusb-1.0 libpcsc-perl libpcsclite-dev "
 apt-get install -y $basepkg $gfxpkg $kodipkg $mysqlpkg $vdrpkg $oscampkg $pyloadpkg $wifipkg
+apt-get build-dep -y vdr kodi
 
 #vdr
 ### testing ###
