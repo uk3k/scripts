@@ -6,7 +6,7 @@
 
 #important: before compiling edit FFDecsa-Section in the Makefiles for SC an DVBAPI:
 #from "PARALLEL   ?= ????" to "PARALLEL   ?= PARALLEL_128_4INT"
-#and remove all -mmx -msse2 -msse3 flags ;-) in the same section
+#and remove all -mmmx -msse -msse2 -msse3 flags ;-) in the same section
 
 echo "deb-src http://archive.raspbian.org/raspbian/ jessie main contrib non-free rpi" >> /etc/apt/sources.list
 apt-get install -y python-software-properties software-properties-common git git-core fontconfig libfontconfig1-dev libjpeg-dev
