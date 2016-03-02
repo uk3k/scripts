@@ -28,7 +28,6 @@ if [ "$tv_vdr" = "true" ]
   usermod -a -G video vdr
   mkdir -p $install/src /var/vdr /var/vdr/record
   mkdir -p /var/lib/vdr/plugins/vnsiserver /var/lib/vdr/plugins/streamdev-server /var/lib/vdr/plugins/sc /var/lib/vdr/plugins/svdrpservice
-  mkdir -p /etc/vdr/plugins/vnsiserver /etc/vdr/plugins/streamdev-server /etc/vdr/plugins/sc /etc/vdr/plugins/svdrpservice
   chown -R :video /var/vdr /var/lib/vdr/
   chmod -R g+w /var/vdr /var/lib/vdr/
   cd /$install/src
