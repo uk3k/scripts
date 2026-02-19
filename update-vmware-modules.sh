@@ -1,3 +1,4 @@
+#thanks to https://github.com/kulkansecurity/secureboot-signer
 #!/bin/bash
 echo "if build process failes try to install modules first and run script again"
 echo "sudo vmware-modconfig --console --install-all"
