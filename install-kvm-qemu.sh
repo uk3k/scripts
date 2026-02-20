@@ -11,7 +11,7 @@
 #Convert: qemu-img convert -O qcow2 VVmX-000001.vmdk KVmX.qcow2
 
 sudo apt update
-sudo apt install qemu-kvm libvirt-clients libvirt-daemon-system bridge-utils virtinst libvirt-daemon virt-manager nm-connection-editor resolvconf qemu-utils -y
+sudo apt install qemu-kvm libvirt-clients libvirt-daemon-system bridge-utils virtinst libvirt-daemon virt-manager nm-connection-editor resolvconf qemu-utils ovmf -y
 sudo virsh net-start default
 sudo virsh net-autostart default
 sudo modprobe vhost_net
