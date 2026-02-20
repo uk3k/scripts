@@ -9,6 +9,7 @@
 
 #Hint: Use nm-connection-editor for creating the bridge  instead of the KDE provided applet, this seems to be unreliable
 #Convert: qemu-img convert -O qcow2 VVmX-000001.vmdk KVmX.qcow2
+#Qemu Win-Drivers: https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/archive-virtio/?C=M;O=D
 
 sudo apt update
 sudo apt install qemu-kvm libvirt-clients libvirt-daemon-system bridge-utils virtinst libvirt-daemon virt-manager nm-connection-editor resolvconf qemu-utils ovmf -y
