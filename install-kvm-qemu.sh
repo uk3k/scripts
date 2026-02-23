@@ -33,7 +33,7 @@ read -p "DEVICE to be bridged?: " device
 sudo nmcli con add ifname br0 type bridge con-name br0
 sudo nmcli con add type bridge-slave ifname $device master br0
 sudo nmcli con modify br0 bridge.stp no
-ncli connection show
+nmcli connection show
 read -p "disable connection-NAME (of $device) before enbaling the bridge: " name
 sudo nmcli con down "$name"
 sudo nmcli con up br0
