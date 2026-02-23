@@ -12,7 +12,7 @@
 #Qemu Win-Drivers: https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/archive-virtio/?C=M;O=D
 
 sudo apt update
-sudo apt install qemu-kvm libvirt-clients libvirt-daemon-system bridge-utils virtinst libvirt-daemon virt-manager nm-connection-editor resolvconf qemu-utils ovmf -y
+sudo apt install qemu-kvm libvirt-clients libvirt-daemon-system bridge-utils virtinst libvirt-daemon virt-manager nm-connection-editor resolvconf qemu-utils ovmf virtiofsd -y
 sudo virsh net-start default
 sudo virsh net-autostart default
 sudo modprobe vhost_net
