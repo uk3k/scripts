@@ -19,6 +19,12 @@ sudo modprobe vhost_net
 echo "vhost_net" | sudo tee -a /etc/modules
 sudo adduser $USER libvirt
 sudo adduser $USER libvirt-qemu
+#winapps rootless access as VM might not be detected by winapps' setup.sh
+echo 'export LIBVIRT_DEFAULT_URI="qemu:///system"' >> ~/.bashrc
+echo 'LIBVIRT_DEFAULT_URI="qemu:///system"' | sudo tee -a /etc/environment
+sudo usermod -a -G kvm $USER # Add the user to the 'kvm' group.
+newgrp kvm
+##################################
 newgrp libvirt
 newgrp libvirt-qemu
 read -p "check that network connections are NOT managed by /etc/interfaces!. [Enter --> got it]: "
