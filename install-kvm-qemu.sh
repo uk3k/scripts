@@ -8,7 +8,7 @@
 #https://medium.com/@santoshgarole/migrating-virtual-machines-a-guide-to-migrating-vmware-vms-to-kvm-dd6860c52adc
 
 #Hint: Use nm-connection-editor for creating the bridge  instead of the KDE provided applet, this seems to be unreliable
-#Convert: qemu-img convert -O qcow2 VVmX-000001.vmdk KVmX.qcow2
+#Convert: qemu-img convert -O -p qcow2 VVmX-000001.vmdk KVmX.qcow2
 #Qemu Win-Drivers: https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/archive-virtio/?C=M;O=D
 
 sudo apt update
