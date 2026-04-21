@@ -8,6 +8,8 @@ sudo cp ~./Downloads/jdk-8u441-linux-x64.tar.gz /opt/java/
 cd /opt/java
 sudo tar xzvf jdk-8u441-linux-x64.tar.gz
 sudo rm jdk-8u441-linux-x64.tar.gz
+sudo update-alternatives --install /usr/bin/java java /opt/java/jdk1.8.0_441/bin/java 100
+sudo update-alternatives --install /usr/bin/javac javac /opt/java/jdk1.8.0_441/bin/javac 100
 sudo update-alternatives --config java
 #select V1.8.441
 java -version
