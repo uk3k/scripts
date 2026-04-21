@@ -1,12 +1,13 @@
 #SOU requires multiple outdated java-modules/plugins + chrome-webkit in a specific version
 #  --> only Oracle Java V1.8 Upd 441 is working with client Version 5.12.012.001.001
 #Download the SAME Version as used under Version from Oracle (account required)
+#https://www.oracle.com/de/java/technologies/javase/javase8u211-later-archive-downloads.html
 wget https://download.oracle.com/otn/java/jdk/8u441-b07/7ed26d28139143f38c58992680c214a5/jdk-8u441-linux-x64.tar.gz?AuthParam=1776773613_0748185c94009cf8ef33aeb26859c3c6
 sudo mkdir -p /opt/java/
 sudo cp ~./Downloads/jdk-8u441-linux-x64.tar.gz /opt/java/
 cd /opt/java
 sudo tar xzvf jdk-8u441-linux-x64.tar.gz
-rm jdk-8u441-linux-x64.tar.gz
+sudo rm jdk-8u441-linux-x64.tar.gz
 sudo update-alternatives --config java
 #select V1.8.441
 java -version
