@@ -1,0 +1,3 @@
+Backup-SD-Karte komprimieren:
+dd if=/dev/sda bs=4M status=progress | gzip > ~/rpi-backup-$(date "+%Y%m%d-%H%M").img.gz
+gunzip -c rpi-backup-xxx.img.gz | sudo dd of=/dev/sda bs=4M status=progress
