@@ -17,7 +17,7 @@ if [ ! -z "$localfile" ]; then
   echo -e "found local driver package $localfile, what are we gonna do?"
   read -p 'use the (l)ocal file or (d)ownlod another one from nvidia.com? [l] ' mode  
   if [ "$mode" == "l" ] || [ -z "$mode" ]; then
-    echo "using local file $localfile \n"
+    echo -e "using local file $localfile \n"
   fi
 else
   echo -e "no local packages found ..."
@@ -49,7 +49,7 @@ if [ "$mode" == "d" ] || [ -z "$localfile" ]; then
   localfile=$(ls | grep NVIDIA-Linux | tail -1)
 fi
 
-read- p 'for Blackwell GPUs an newer (>=RTX5xxx) select MIT/GPL driver!' driver_package
+read -p 'for Blackwell GPUs an newer (>=RTX5xxx) select MIT/GPL driver! [ENTER] to start installation... ' driver_package
 chmod +x $localfile
 ./$localfile --module-signing-secret-key=/root/module-signing/MOK-nvidia.priv --module-signing-public-key=/root/module-signing/signing-nvidia.x509
 echo -e ""
