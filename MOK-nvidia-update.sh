@@ -11,7 +11,7 @@ localfile=$(ls | grep NVIDIA-Linux | tail -1)
 
 if [ ! -z "$localfile" ]; then
   echo -e "found local driver package $localfile, use this?"
-  read -p ' (l)ocal file or (d)ownlod from nvidia? [y] ' mode  
+  read -p ' (l)ocal file or (d)ownlod from nvidia? [l] ' mode  
   if [ "$mode" == "l" ] || [ -z "$mode" ]; then
     echo "using local file $localfile \n"
   fi
