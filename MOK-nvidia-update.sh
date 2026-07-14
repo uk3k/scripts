@@ -1,5 +1,9 @@
 #!/bin/bash
 #thanks to https://www.if-not-true-then-false.com/2025/debian-nvidia-guide/
+#place here the most recent driver package version
+#2026-07-14: 595.84
+recent_version="595.84"
+
 echo -e "MOK-signed Nvidia-Drivers Update Script by uk3k.de \n"
 if [ "$EUID" -ne 0 ]; then
   echo "Please run as root"
@@ -21,19 +25,18 @@ fi
 
 if [ "$mode" == "d" ] || [ -z "$localfile" ]; then
   echo -e "trying to download current driver from nvidia.com..."
-  read -p 'whats the current nvidia driver version? [e.g. 580.126.09]: ' version
+  read -p 'Enetr driver package version to download [e.g. 595.71.05 or 595.84]: ' version
   
   if [ -z "$version" ]; then
-    echo -e "invalid version: {emtpy}; abort!"
-    exit
-  else
-    arch=$(uname -m)
-    url="https://us.download.nvidia.com/XFree86/Linux-$arch/$version/NVIDIA-Linux-$arch-$version.run"
-    echo -e "trying to fetch driver-version $version for $arch \n"
-    #echo -e "deleting old files..."
-    #rm NVIDIA-Linux-* 2>/dev/null
+    echo -e "invalid version: {emtpy}; trying to download version $recent_version! \n"
+    version=$recent_version
   fi
   
+  arch=$(uname -m)
+  rm NVIDIA-Linux-$arch-$version.run 2>/dev/null
+  url="https://us.download.nvidia.com/XFree86/Linux-$arch/$version/NVIDIA-Linux-$arch-$version.run"
+  echo -e "trying to fetch driver-version $version for $arch \n"
+      
   if wget -q --spider "$url" > /dev/null; then
     wget $url
   else
