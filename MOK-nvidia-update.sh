@@ -1,47 +1,47 @@
 #!/bin/bash
 #thanks to https://www.if-not-true-then-false.com/2025/debian-nvidia-guide/
-echo "MOK-signed Nvidia-Drivers Update Script by uk3k.de \n"
+echo -e "MOK-signed Nvidia-Drivers Update Script by uk3k.de \n"
 if [ "$EUID" -ne 0 ]; then
   echo "Please run as root"
   exit
 fi
 
-echo "Checking for local driver packages in current directory... \n"
+echo -e "Checking for local driver packages in current directory... \n"
 localfile=$(ls | grep NVIDIA-Linux | tail -1)
 
 if [ ! -z "$localfile" ]; then
-  echo "found local driver package $localfile, use this?"
+  echo -e "found local driver package $localfile, use this?"
   read -p ' (l)ocal file or (d)ownlod from nvidia? [y] ' mode  
   if [ "$mode" == "l" ] || [ -z "$mode" ]; then
     echo "using local file $localfile \n"
   fi
 else
-  echo "no local packages found ..."
+  echo -e "no local packages found ..."
 fi
 
 if [ "$mode" == "d" ] || [ -z "$localfile" ]; then
-  echo "trying to download current driver from nvidia.com..."
+  echo -e "trying to download current driver from nvidia.com..."
   read -p 'whats the current nvidia driver version? [e.g. 580.126.09]: ' version
   
   if [ -z "$version" ]; then
-    echo "invalid version: {emtpy}; abort!"
+    echo -e "invalid version: {emtpy}; abort!"
     exit
   else
     arch=$(uname -m)
     url="https://us.download.nvidia.com/XFree86/Linux-$arch/$version/NVIDIA-Linux-$arch-$version.run"
-    echo "trying to fetch driver-version $version for $arch \n"
-    #echo "deleting old files..."
+    echo -e "trying to fetch driver-version $version for $arch \n"
+    #echo -e "deleting old files..."
     #rm NVIDIA-Linux-* 2>/dev/null
   fi
   
   if wget -q --spider "$url" > /dev/null; then
     wget $url
   else
-    echo "404: Download @ $url not found; abort!"
+    echo -e "404: Download @ $url not found; abort!"
     exit
   fi
   
-  echo "Download complete, running installer \n"
+  echo -e "Download complete, running installer \n"
   localfile=$(ls | grep NVIDIA-Linux | tail -1)
 fi
 
@@ -55,6 +55,6 @@ else
   exit
 fi
 
-echo "setting boot target to GUI (runlevel 5) \n"
+echo -e "setting boot target to GUI (runlevel 5) \n"
 systemctl set-default graphical.target
-echo "reboot to finish update \n"
+echo -e "reboot to finish update \n"
