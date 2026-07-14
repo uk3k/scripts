@@ -45,8 +45,8 @@ if [ "$mode" == "d" ] || [ -z "$localfile" ]; then
   localfile=$(ls | grep NVIDIA-Linux | tail -1)
 fi
 
-chmod +x $localfile.run
-./$localfile.run --module-signing-secret-key=/root/module-signing/MOK-nvidia.priv --module-signing-public-key=/root/module-signing/signing-nvidia.x509
+chmod +x $localfile
+./$localfile --module-signing-secret-key=/root/module-signing/MOK-nvidia.priv --module-signing-public-key=/root/module-signing/signing-nvidia.x509
 read -p 'finished, cleanup installer files? (input "clean" to clean ALL driver files): ' clean
 
 if [ ! -z "$clean" ]; then
