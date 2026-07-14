@@ -24,8 +24,9 @@ else
 fi
 
 if [ "$mode" == "d" ] || [ -z "$localfile" ]; then
+  echo -e ""
   echo -e "trying to download current driver from nvidia.com..."
-  read -p 'Enetr driver package version to download [e.g. 595.71.05 or 595.84]: ' version
+  read -p 'Enter driver package version to download [e.g. 595.71.05 or 595.84]: ' version
   
   if [ -z "$version" ]; then
     echo -e "invalid version: {emtpy}; trying to download version $recent_version! \n"
@@ -48,9 +49,13 @@ if [ "$mode" == "d" ] || [ -z "$localfile" ]; then
   localfile=$(ls | grep NVIDIA-Linux | tail -1)
 fi
 
+read- p 'for Blackwell GPUs an newer (>=RTX5xxx) select MIT/GPL driver!' driver_package
 chmod +x $localfile
 ./$localfile --module-signing-secret-key=/root/module-signing/MOK-nvidia.priv --module-signing-public-key=/root/module-signing/signing-nvidia.x509
-read -p 'finished, cleanup installer files? (input "clean" to clean ALL driver files): ' clean
+echo -e ""
+echo -e "local driver packages present: \n"
+ls | grep NVIDIA-Linux
+echo -e ""
 
 if [ ! -z "$clean" ]; then
   rm NVIDIA-Linux-* 2>/dev/null
